@@ -13,11 +13,12 @@ different camera makes write EXIF orientation differently.
 ## Usage
 
 ```
-go run . -dir <source-directory> -watermark <watermark-image-path>
+go run . -dir <path-to-photos-directory> -watermark <path-to-watermark-image> -size <width pixel size>
 ```
 
 - `-dir`: directory containing the source `.jpg` files.
 - `-watermark`: path to the image overlaid as the watermark.
+- `-size`: resize target for the image's long edge, in pixels.
 
 Output is written to `<dir>/watermarked/`, created automatically if it
 doesn't exist. Output files keep the original file name.
