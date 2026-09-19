@@ -26,7 +26,7 @@ builds:
 archives:
   - id: default
     formats:
-      - tar.gz
+      - zip
     name_template: >-
       {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}
 
@@ -37,3 +37,5 @@ release:
   github:
     owner: jbernhardsch
     name: image-watermark
+  mode: replace
+  replace_existing_artifacts: true
