@@ -31,7 +31,12 @@ var (
 func main() {
 	var dir = flag.String("dir", "", "type the directory of images")
 	var waterMark = flag.String("watermark", "", "image for watermark")
+	var size = flag.Int("size", RESIZE_VALUE, "resize target (long edge, in pixels)")
 	flag.Parse()
+
+	if *size > 0 {
+		RESIZE_VALUE = *size
+	}
 
 	// reserve target directory name
 	targetDir := fmt.Sprintf("%s/watermarked", *dir)

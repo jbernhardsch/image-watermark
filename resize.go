@@ -20,16 +20,18 @@ func resizeImaging(needRotate bool, orientation, fullName, dir, targetDir string
 	var (
 		width, height int
 	)
-	// set image size based on orientation and camera
-	if (orientation == IMAGE_LANDSCAPE && !needRotate) || ((orientation == IMAGE_PORTRAIT_FUJI || orientation == IMAGE_PORTRAIT_FUJI_SPC) && needRotate) || (orientation == IMAGE_LANDSCAPE && needRotate) {
-		width = RESIZE_VALUE
-		height = 0
-
-	} else if orientation == IMAGE_PORTRAIT && needRotate {
+	// Set the output size based on the final orientation only. Whether the
+	// image still needs a physical rotate (needRotate) is a separate
+	// concern handled below - an image can already be portrait-shaped
+	// (e.g. edited in Photoshop, which bakes the rotation into the pixels)
+	// and still need no rotation, so the resize target must not depend on
+	// needRotate.
+	switch orientation {
+	case IMAGE_PORTRAIT, IMAGE_PORTRAIT_FUJI, IMAGE_PORTRAIT_FUJI_SPC:
 		width = 0
 		height = RESIZE_VALUE
 
-	} else if orientation == IMAGE_NOEXIF {
+	case IMAGE_NOEXIF:
 		if reader, err := os.Open(filepath.Join(dir, fullName)); err == nil {
 			defer reader.Close()
 			im, _, _ := image.DecodeConfig(reader)
@@ -46,7 +48,8 @@ func resizeImaging(needRotate bool, orientation, fullName, dir, targetDir string
 			fmt.Println("Impossible to open the file:", err)
 		}
 
-	} else {
+	default:
+		// IMAGE_LANDSCAPE, and any other/unrecognized orientation
 		width = RESIZE_VALUE
 		height = 0
 	}
