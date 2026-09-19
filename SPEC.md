@@ -24,7 +24,7 @@ different camera makes write EXIF orientation differently.
 ## Usage
 
 ```
-go run . -dir <path-to-photos-directory> -watermark <path-to-watermark-image> -size <width pixel size>
+go run . -dir <path-to-photos-directory> -watermark <path-to-watermark-image> -size <width-pixel-size>
 ```
 
 - `-dir`: directory containing the source `.jpg` files.
