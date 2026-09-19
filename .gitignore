@@ -1,1 +1,9 @@
 .idea
+dist/
+
+watermark
+watermark-darwin-amd64
+watermark-darwin-arm64
+watermark-linux-amd64
+watermark-linux-arm64
+watermark-windows.exe
