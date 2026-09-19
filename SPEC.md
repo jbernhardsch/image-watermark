@@ -1,6 +1,17 @@
 # Image Watermark — Spec
 
-Module: `github.com/jbernhardsch/image-watermark` (Go 1.21)
+Module: `github.com/jbernhardsch/image-watermark`
+
+## Language & Runtime
+
+- **Language**: [Go](https://go.dev) (Golang)
+- **Minimum version**: Go 1.21.4, per the `go` directive in `go.mod`
+- **Recommended version**: latest Go 1.21.x (or newer) toolchain — the code
+  uses only standard-library features available since 1.21, so any newer
+  Go release builds it without changes
+- No other language runtime is required; the built binary is a static,
+  dependency-free executable for its target OS/arch (see
+  [Building](#requirements) in `README.md`)
 
 ## Purpose
 
